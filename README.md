@@ -28,7 +28,9 @@ The below points are steps that to be followed for creating etherum private netw
 Geth is an Ethereum client written in Go. This means running Geth turns a computer into an Ethereum node. To install it on a linux, run the following commands:
 
 `sudo add-apt-repository -y ppa:ethereum/ethereum`
+
 `sudo apt-get update`
+
 `sudo apt-get install ethereum`
 
 For other versions follow this link :https://geth.ethereum.org/docs/getting-started/installing-geth
