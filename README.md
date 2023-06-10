@@ -330,7 +330,8 @@ Next, open the contracts folder and create a new file called calculator.sol. Com
 
 `pragma solidity ^0.8.0;
 
- contract Calculator {
+ contract Calculator 
+  {
 
   function add(uint256 a, uint256 b) public pure returns (uint256) {
   
@@ -338,43 +339,39 @@ Next, open the contracts folder and create a new file called calculator.sol. Com
     
   }
   
-  function subtract(uint256 a, uint256 b) public pure returns (uint256) {
+  function subtract(uint256 a, uint256 b) public pure returns (uint256) 
+  {
   
     return a - b;
     
   }
   
-  function multiply(uint256 a, uint256 b) public pure returns (uint256) {
-  
-    return a * b;
-    
+  function multiply(uint256 a, uint256 b) public pure returns (uint256) 
+  {
+    return a * b; 
   }
   
-  function divide(uint256 a, uint256 b) public pure returns (uint256) {
-  
+  function divide(uint256 a, uint256 b) public pure returns (uint256) 
+  {
     require(b != 0, "Division by zero");
-    
-    return a / b;
-    
+    return a / b;  
   }
   
-  function square(uint256 a) public pure returns (uint256){
-  
-      return a^2;
-      
+  function square(uint256 a) public pure returns (uint256)
+  {
+      return a^2;     
   }
-  
- }`
+  }
+ `
 
 The next step is to update the migrations file so that Truffle knows that it needs to compile and migrate the contract that we just created. Open the 1_deploy_contract.js file located in the migrations folder and modify its content to match the following:
 
-`const Calculator = artifacts.require("Calculator");
+` const Calculator = artifacts.require("Calculator");`
+  `module.exports = function (deployer) 
+  {
+   deployer.deploy(Calculator);
+  };`
 
-module.exports = function (deployer) {
-
-deployer.deploy(Calculator);
-
-};`
 Now, we can utilize Truffle to compile our contract and deploy it to our network. It's important to note that Truffle will also compile and deploy its migrations contract. The migrations contract serves the purpose of tracking the deployed versions of our contracts and ensuring they remain up to date.
 
 Go to the contracts folder and run the following command:
@@ -399,20 +396,29 @@ The contract should now be deployed in your network in a new address.
 The following command is connect with deployed contracts:
 
 `truffle console`
-       
-`let MyContract = artifacts.require('Calculator');`       
-
 With the contract instance available, you can now interact with its functions and state variables. You can call contract functions using the instance's method calls. For example:
 
-`let result = await myContractInstance.myFunction();` // Replace 'myFunction' with the actual function name
+`let variableName = await myContractInstance.myFunction();` // Replace 'myFunction' with the actual function name
 
-`console.log(result);` // Output the result or perform further actions 
+`console.log(variableName);` // Output the result or perform further actions 
 
 Here example from deployed contract is,
 
-`let result = await MyContract.add(4,3);`
+`let MyContract = artifacts.require('Calculator');`   
 
-`console.log(result);`
+`let result =  await MyContract.deployed();`
+
+`let addResults = await result.add(4,3);`
+
+`console.log(addResults);`
+
+![image](https://github.com/Manasamahesh/privateNetwork/assets/25504822/e4d804af-8ca1-449a-8fb9-1ca9784b9cf8)
+
+
+
+
+
+
 
 
  
