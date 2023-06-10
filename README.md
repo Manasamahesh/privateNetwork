@@ -61,8 +61,8 @@ Following are the step to be followed for creating genesis block:
 
 which includes the following config details in the file.
 
-`{
- "config": {
+     {
+         "config": {
     
         "chainId": 8888,
         
@@ -93,7 +93,7 @@ which includes the following config details in the file.
         "0x1496d986cc5194b39f82ea89A61c1b31Cf33F57e" : {"balance": "9999999999999999999999999"}
         
     }    
-}`
+    }
 The given JSON represents a configuration file for a private Ethereum network. Let's go through each key and its purpose:
 
 "config": 
@@ -169,13 +169,13 @@ Let’s create Ethereum accounts in the first node, so that later we can do some
 You will be prompted for a secret password. Write down the address of the created accounts and save the password in the file as password.txt inside of the node(node01, node02, node03) folder.
 Now go back to genesis file, over there paste this account along with balance under alloc key.
 
-`    "alloc": {
+     alloc:{
     
         "generatedAccount1": { "balance": "9999999999999999999999999" },
         
         "generatedAccount2" : {"balance": "9999999999999999999999999"}
         
-    }`
+     }
 
 # Initialize and start the nodes :
  
@@ -315,7 +315,7 @@ Next we will initialize a new Truffle project by running this command in a new f
 
 After the creation of initial files and directories, you'll need to update the truffle-config.js file to ensure Truffle can establish a connection with your network. Modify the file with the following content, making sure to replace the port number with the one corresponding to your first node's running port. Additionally, provide the complete address of the first account created in that node for the from address field.
 
-`networks: {
+      networks: {
 
       private: {
          host: "127.0.0.1",
@@ -325,12 +325,12 @@ After the creation of initial files and directories, you'll need to update the t
          from: "0x55860Df9065F504b79BF599FCf0Ce1340fD065d8", // (give the account number which is generated as part of node creation)
         chainId: 8888,
        },
-       } `
+       } 
 Next, open the contracts folder and create a new file called calculator.sol. Complete it with the following code, which is a simple contract written in the Solidity language:
 
 `pragma solidity ^0.8.0;
 
-contract Calculator {
+ contract Calculator {
 
   function add(uint256 a, uint256 b) public pure returns (uint256) {
   
@@ -364,7 +364,7 @@ contract Calculator {
       
   }
   
-}`
+ }`
 
 The next step is to update the migrations file so that Truffle knows that it needs to compile and migrate the contract that we just created. Open the 1_deploy_contract.js file located in the migrations folder and modify its content to match the following:
 
@@ -404,14 +404,17 @@ The following command is connect with deployed contracts:
 
 With the contract instance available, you can now interact with its functions and state variables. You can call contract functions using the instance's method calls. For example:
 
-`let result = await myContractInstance.myFunction(); // Replace 'myFunction' with the actual function name
+`let result = await myContractInstance.myFunction();` // Replace 'myFunction' with the actual function name
 
-console.log(result); // Output the result or perform further actions`
+`console.log(result);` // Output the result or perform further actions 
 
 Here example from deployed contract is,
-`let result = await MyContract.add(4,3);
- 
- console.log(result);`
+
+`let result = await MyContract.add(4,3);`
+
+`console.log(result);`
+
+
  
  
  
